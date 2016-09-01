@@ -22,6 +22,9 @@
     },
     "net451": {
       "dependencies": {}
+    },
+    "net461": {
+      "dependencies": {}
     }
   }
 }

@@ -13,15 +13,36 @@
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.Extensions.DiagnosticAdapter": "1.0.0",
-    "System.Diagnostics.DiagnosticSource": "4.0.0",
-    "System.Net.Http": "4.1.0"
+    "System.Diagnostics.DiagnosticSource": "4.0.0"
+    
   },
   "frameworks": {
     "net451": {
-      "dependencies": {}
+      "dependencies": {
+        "System.Net.Http": {
+          "version": "4.1.0",
+          "target": "package"
+        }
+      }
+    },
+    "net461": {
+      "dependencies": {
+        "System.Net.Http": {
+          "version": "4.3.0-beta-24431-01",
+          "target": "package"
+          //Without setting target to "package" the project will by default reference the GAC version.
+          //While running nuget packaging this results in an "element in sequence not found" error while 
+          //building for 4.6.1. The effect of this is that the nuget package for this project is not built
+        }
+      }
     },
     "netstandard1.6": {
-      "dependencies": {}
+      "dependencies": {
+        "System.Net.Http": {
+          "version": "4.1.0",
+          "target": "package"
+        }
+      }
     }
   },
   "buildOptions": {

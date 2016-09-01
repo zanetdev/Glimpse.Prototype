@@ -235,3 +235,4 @@ $RECYCLE.BIN/
 project.lock.json
 .vs
 /src/sample/Glimpse.*.Sample/wwwroot/lib/
+/test/websites/Glimpse.FunctionalTest.Website/web.config

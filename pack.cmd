@@ -17,6 +17,10 @@ REM get time
 For /f "tokens=2-4 delims=/ " %%a in ('date /t') do (set DATE=%%c%%a%%b)
 For /f "tokens=1-2 delims=/:" %%a in ("%TIME%") do (set TIME=%%a%%b)
 
+REM Trim White Space to ensure that single digit times are handled. (eg when time is 0:15)
+for /f "tokens=* delims= " %%a in ("%TIME%") do set TIME=%%a
+
+
 set MILESTONE=beta2-%DATE%%TIME%
 
 call dotnet pack .\src\Glimpse.Common\project.json --configuration Release --version-suffix %MILESTONE%
@@ -30,3 +34,6 @@ copy /Y src\Glimpse.Common\bin\Release\*.nupkg dist
 copy /Y src\Glimpse.Server\bin\Release\*.nupkg dist
 copy /Y src\Glimpse.Agent.AspNet\bin\Release\*.nupkg dist
 copy /Y src\Glimpse.Agent.AspNet.Mvc\bin\Release\*.nupkg dist
+
+REM I want to examine the output
+pause
